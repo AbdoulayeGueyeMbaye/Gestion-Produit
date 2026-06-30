@@ -25,79 +25,7 @@ $categories = [
                ]
         ];
 
-foreach ($categories as $categorie) {
-    if (count($categorie["produits"]) == 0) {
-        echo $categorie["nom"];
-    }
-}
 
-$codeIsValid = true;
-
-do {
-    $code = readline ("Entrer le code : ");
-    if (empty($code)) {
-        echo "Le code est obligatoire ";
-        $codeIsValid = false;
-
-
-    } else {
-        foreach ($categories as $categorie ) {
-            if (($categorie["code"]) === $code) {
-                $codeIsValid = false; 
-                echo "le code exitse deja.";
-            }
-        }
-    }
-} while (!$codeIsValid);
-
-$nomIsValid = true;
-
-do {
-     $nom = readline ("Entrer le nom : ");
-    if (empty($nom)) {
-        echo "Le nom est obligatoire ";
-        $nomIsValid = false;
-
-
-    } else {
-        foreach ($categories as $categorie ) {
-            if (($categorie["nom"]) === $nom) {
-                $nomIsValid = false; 
-                echo "le nom exitse deja.";
-            }
-        }
-    }
-    
-} while (!$nomIsValid);
-
-$categorie = [ 
-                "code" => $code,
-                "nom" =>  $nom,
-                "produits" => []
-            ];
-
-                $categories[] = $categorie;
-
-$produits = [];
-
-do {
-$produit = [
-        "nom"=> readline ("Entrer le nom : "),
-        "reference" => readline ("Entrer le reference : "),
-        "prix" => (int)readline("Entrer le prix : "),
-        "quantite" => (int) readline("Entrer la quantité : ")
-];
-$produits[] = $produit;
-$choix = strtolower(readline("Est-ce que vous voulez continnuer oui/non"));
-} while ($choix === "oui");
-
-$categorie = [
-    "code" => $code,
-    "nom" => $nom,
-    "produits" => $produits
-];
-
-$categories[] = $categorie;
 
 
 
