@@ -37,8 +37,51 @@ $categories = [
 
         afficherCategorieSansProduit($categories);
 
+        function saisiChaine(string $message): string {
+            return readline($message);
+        }
 
+        saisiChaine($message);
 
+        function champObligatoire (string $value, string $message): bool{
+            if (empty($value)) {
+                echo $message ;
+                return false;
+            }
+                return true;
+        }
+
+        function saisiChampobligatoireEtUnique(array $categories, string $mesSaisie, string $mesError, string $key): string{
+            $valueIsValid = true;
+
+            do {
+                $value = saisieChaine($mesSaisie);
+                $valueIsValid = champObligatoire($value,$mesError);
+                if($valueIsValid){     
+                $valueIsValid = rechercheCategorieParCle($categories,$key,$value);
+        }
+            } while (!valueIsValid);
+
+            return $value;
+        }
+
+        function saisiChampobligatoireEtUnique(array $categories, string $mesSaisie, string $mesError, string $key);
+
+        function enregistrerCategorie(): void{
+                global $categories;
+                $code = saisieChampObligatoireEtUnique($categories,"Entrez le code :", "champs obligatoire : ", "code");
+                $nom = saisieChampObligatoireEtUnique($categories,"Entrez le nom :", "champs obligatoire : ", "nom");
+
+                $categorie  =   [
+                        "code" => $code,
+                        "nom" => $nom,
+                        "produits" => []
+                    ];
+
+                $categories[] = $categorie;
+            }
+
+            function enregistrerCategorie();
 
 
 ?>
