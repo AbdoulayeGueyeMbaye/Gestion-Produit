@@ -65,7 +65,6 @@ $categories = [
             return $value;
         }
 
-        function saisiChampobligatoireEtUnique(array $categories, string $mesSaisie, string $mesError, string $key);
 
         function enregistrerCategorie(): void{
                 global $categories;
